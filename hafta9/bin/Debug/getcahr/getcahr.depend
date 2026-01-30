@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1765048789 source:c:\users\fmmer\onedrive\masaüstü\yeni klasör\hafta9\bin\debug\getcahr\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+
