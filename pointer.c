@@ -2,7 +2,7 @@
 #include<stdlib.h>
 
 int main(){
-    int m=10, n, o *z;
+    int m=10, n, o, *z;
 
     z = &m;
     *z = m;
