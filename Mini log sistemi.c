@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 #define MAX_NAME_LENGHT 50
 #define FILE_NAME "users.txt"
@@ -68,7 +69,7 @@ return 0;
 
  void kullanicilariListele(User liste[]){
     register int i;
-    if(totalUserCount ==0){
+    if(totalUserCount == 0){
         printf("Henuz kimse eklenmemis!\n");
         return;
     }
@@ -112,15 +113,22 @@ void kullaniciEkle(User *liste){
     printf("Kullanici bellege eklendi.");
     printf("Bu oturumda toplam %d kisi eklediniz.\n", sessionUserAdded);
  }
- void dosyayaKaydet(User liste[]){
+ void dosyayaKaydet(User liste[], int kisisayisi){
         FILE *dosya;
-        User yenikullanici = {1, "Yaren", 18};
+        User yenikullanici[kisisayisi];
+         if(kisisayisi == 0){
+            printf("Kaydedilecek kullanici yok!\n");
+            return;
+         }
+        printf("\n--- Dosyaya Kaydet ---\n");
        dosya = fopen("FILE_NAME", "a"); //sonuna ekleme için append modu
        if(dosya == NULL){
         printf("Dosya acilamdi");
         exit(-1);
        }
-     fprintf(dosya, "%d %s %d\n", yenikullanici.id, yenikullanici.name, yenikullanici.age);
+       for(int i=0; i<kisisayisi; i++){
+     fprintf(dosya, "%d %s %d\n", yenikullanici[i].id, yenikullanici[i].name, yenikullanici[i].age);
+         }
      fclose(dosya);
      printf("Kullanici kaydedildi");
  }
